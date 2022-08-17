@@ -5,8 +5,11 @@ This exercise uses CDC to
 - Manage change propogation in various database formats, including RDBMS, Document, Key-value, and distributed-decentralized databases. 
 - This will be automated via shell comands, custom scripts, containers, database initilizing, and creating an event loop
 
-We'll walk through the lesson accordingly: 
+## We'll walk through the lesson accordingly: 
 1. A walk through on how to incorporate shell commands in a python script followed by adapting these scripts for automating the creation and deletion of containers within terminal. 
+2. Database initilation - many DBs, such as redis and mongo, do not require the DB to be initilized. However, Cassandra and MySQL do. 
+3. database changes - this exercise uses a (script)[timer.py] to simulate periodic changes
+
 
 
 # What Is Change Data Capture (CDC)?
@@ -42,8 +45,8 @@ Suppose you have the following table:
 | Customer_ID | Last_Purchase |
 
 |------------|-------------| 
-|1 | 03-13-2021 |
-|2 | 05-07-2021 |
+| 1 | 03-13-2021 |
+| 2 | 05-07-2021 |
 | 3 | 10-24-2021 |
 
 Then suppose that the customer with an ID equal to 1 makes a new purchase on 10-31-2021 and that a new customer, with an ID equal to 4, makes their first purchase on 11-02-2021.
