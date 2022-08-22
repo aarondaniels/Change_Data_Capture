@@ -4,7 +4,9 @@ Change Data Capture (CDC) allows users to insert, update, and delete records in 
 This exercise uses CDC to
 - Manage change propogation in various database formats, including RDBMS, Document, Key-value, and distributed-decentralized databases. 
 - This will be automated via shell comands, custom scripts, containers, database initilizing, and creating an event loop
+
 Ultimately, this is an exercise in how CDC works and some of the mechanics. There are formal CDC tools that are better suited for scalable applications. For this repo, I focus on doing CDC by hand in order to build a greater understanding of the mechanics and fundamentals. 
+
 
 ## The instruction will progress as follows: 
 1. A walk through on how to incorporate shell commands in a python script followed by adapting these scripts for automating the creation and deletion of containers within terminal. 
