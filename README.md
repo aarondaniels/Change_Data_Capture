@@ -5,10 +5,17 @@ This exercise uses CDC to
 - Manage change propogation in various database formats, including RDBMS, Document, Key-value, and distributed-decentralized databases. 
 - This will be automated via shell comands, custom scripts, containers, database initilizing, and creating an event loop
 
-## We'll walk through the lesson accordingly: 
+## The instruction will progress as follows: 
 1. A walk through on how to incorporate shell commands in a python script followed by adapting these scripts for automating the creation and deletion of containers within terminal. 
-2. Database initilation - many DBs, such as redis and mongo, do not require the DB to be initilized. However, Cassandra and MySQL do. 
-3. database changes - this exercise uses a (script)[timer.py] to simulate periodic changes
+2. Database initilation - many DBs, such as Redis and Mongo, do not require the DB to be initilized. However, Cassandra and MySQL do. [This](https://github.com/aarondaniels/Change_Data_Capture/blob/main/Automate/create.py) code details how databases are initilized in containers. 
+3. database changes - this exercise uses a (script)[timer.py] to simulate periodic changes. Additional instruction on time loops is captured [here](Time_loops.md)
+4. Finally, the full CDC application will be developed using MySQL and MongoDB
+    - mongo requires less set up and configuration, as detailed here
+    - Create files for the scheduler, containers, and the db's
+
+## How to execute the CDC app? 
+1. *** Create and initialize databse ***: From the terminal, navigate to the file location of the CDC app and execute `python3 containers.py -create` (in order to create the containers. In case of deleting the containers, a similar command is executed, `python3 containers.py -delete`). Finally, initialize the MySQL and Cassandra database' by executing `python3 containers.py -init`
+2. Run the scheduler by executing `python3 scheduler.py` to initate main loop to populate MySQL. Those DB changes will be detected and pushed into MongoDB, Redis, and Cassandra DB's. Confirmations should be displayed in the console. 
 
 
 
