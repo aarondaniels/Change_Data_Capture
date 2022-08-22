@@ -9,12 +9,12 @@ This exercise uses CDC to
 1. A walk through on how to incorporate shell commands in a python script followed by adapting these scripts for automating the creation and deletion of containers within terminal. 
 2. Database initilation - many DBs, such as Redis and Mongo, do not require the DB to be initilized. However, Cassandra and MySQL do. [This](https://github.com/aarondaniels/Change_Data_Capture/blob/main/Automate/create.py) code details how databases are initilized in containers. 
 3. database changes - this exercise uses a (script)[timer.py] to simulate periodic changes. Additional instruction on time loops is captured [here](Time_loops.md)
-4. Finally, the full CDC application will be developed using MySQL and MongoDB
-    - mongo requires less set up and configuration, as detailed here
+4. Finally, the full CDC application will be developed using MySQL, MongoDB, Redis, and Cassandra
+    - Mongo and Redis require less set up and configuration, as detailed [here](https://github.com/aarondaniels/Change_Data_Capture/blob/main/CDC/mongodb.py) and [here](https://github.com/aarondaniels/Change_Data_Capture/blob/main/CDC/redisdb.py), respectively.
     - Create files for the scheduler, containers, and the db's
 
 ## How to execute the CDC app? 
-1. *** Create and initialize databse ***: From the terminal, navigate to the file location of the CDC app and execute `python3 containers.py -create` (in order to create the containers. In case of deleting the containers, a similar command is executed, `python3 containers.py -delete`). Finally, initialize the MySQL and Cassandra database' by executing `python3 containers.py -init`
+1. ***Create and initialize databse***: From the terminal, navigate to the file location of [the CDC app](https://github.com/aarondaniels/Change_Data_Capture/tree/main/CDC) and execute `python3 containers.py -create` (in order to create the containers. In case of deleting the containers, a similar command is executed, `python3 containers.py -delete`). Finally, initialize the MySQL and Cassandra database' by executing `python3 containers.py -init`
 2. Run the scheduler by executing `python3 scheduler.py` to initate main loop to populate MySQL. Those DB changes will be detected and pushed into MongoDB, Redis, and Cassandra DB's. Confirmations should be displayed in the console. 
 
 
@@ -50,7 +50,6 @@ Table deltas are one of the easiest techniques to implement CDC.
 Suppose you have the following table:
 
 | Customer_ID | Last_Purchase |
-
 |------------|-------------| 
 | 1 | 03-13-2021 |
 | 2 | 05-07-2021 |
@@ -62,9 +61,9 @@ Using table deltas, the new table will be:
 
 | Customer_ID | Last_Purchase |
 |-----------|------------|
-| 1 | 10-31-2021 |
+| ***1*** | ***10-31-2021*** |
 | 2 | 05-07-2021 |
 | 3 | 10-24-2021 |
-| 4 | 11-02-2021 |
+| ***4*** | ***11-02-2021*** |
 
 The advantage of this approach is that it provides an accurate view of the changed data using simple queries. The disadvantage of this approach pertains mainly to memory. The demand for data storage increases because you need three copies of the data sources that are being used in this technique: the original data, the previous snapshot, and the current snapshot.
