@@ -5,7 +5,7 @@ This exercise uses CDC to
 - Manage change propogation in various database formats, including RDBMS, Document, Key-value, and distributed-decentralized databases. 
 - This will be automated via shell comands, custom scripts, containers, database initilizing, and creating an event loop
 
-Ultimately, this is an exercise in how CDC works and some of the mechanics. There are formal CDC tools that are better suited for scalable applications. For this repo, I focus on doing CDC by hand in order to build a greater understanding of the mechanics and fundamentals. 
+Ultimately, this is an exercise in how CDC works and some of the mechanics. There are formal CDC tools that are better suited for scalable applications. For this repo, I focus on doing CDC by hand in order to build a greater understanding of the mechanics and fundamentals. A [separate repository](https://github.com/aarondaniels/Change_Data_Capture) has been created to take this one step further and leverage [Debezium](https://debezium.io/) as a platform for automating change data capture. 
 
 
 ## The instruction will progress as follows: 
